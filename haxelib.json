@@ -1,0 +1,10 @@
+{
+    "name"         : "snap.svg-haxe",
+    "url"          : "https://github.com/prgsmall/snap.svg-haxe",
+    "license"      : "MIT",
+    "tags"         : ["snap", "svg", "haxe"],
+    "description"  : "A haxe extern for snap.svg",
+    "version"      : "0.1.0",
+    "releasenote"  : "",
+    "contributors" : ["prgsmall"]
+}

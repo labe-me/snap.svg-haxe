@@ -141,7 +141,7 @@ extern class Snap {
 	public function polygon(?varargs:Array<Dynamic>):SnapElement;
 	public function polyline(?varargs:Array<Dynamic>):SnapElement;
 	public function rect(x:Float, y:Float, width:Float, height:Float, ?rx:Float, ?ry:Float):SnapElement;
-	public function text(x:Float, y:Float, text:String):SnapElement;
+	public function text(x:Float, y:Float, text:Dynamic):SnapElement;
 
 	public function append(el:SnapElement):SnapElement;
 	public function toString():String;
@@ -241,7 +241,7 @@ extern class SnapElement {
 	public function click(handler:Event->Void):SnapElement;
 	public function clone():SnapElement;
 	public function data(key:String, ?value :Dynamic):Dynamic;
-	public function drag(onmove:Event->Void, onstart:Event->Void, onend:Event->Void,
+	public function drag(?onmove:Event->Void, ?onstart:Event->Void, ?onend:Event->Void,
 		                 ?mcontext:Dynamic, ?scontext:Dynamic, ?econtext:Dynamic):Void;
 	public function dblclick(handler:Event->Void):SnapElement;
 	public function getBBox(): Dynamic;
