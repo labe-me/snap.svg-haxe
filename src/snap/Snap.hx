@@ -32,73 +32,95 @@ extern class Snap {
 	static public function snapTo(values:Array<Float>, value:Float, ?tolerance:Float):Float;
 
 	// path utility methods
-	static public function path_bezierBBox(bez:Array<Float>):SnapBoundingBox {
-		return untyped __js__("Snap.path.bezierBBox(bez)");
+	inline static public function path_bezierBBox(bez:Array<Float>):SnapBoundingBox {
+		var bz = bez;
+		return untyped __js__("Snap.path.bezierBBox(bz)");
 	}
-	static public function path_findDotsAtSegment(p1x:Float, p1y:Float, c1x:Float, c1y:Float, c2x:Float, c2y:Float, p2x:Float, p2y:Float, t:Float): SnapPointInformation {
-		return untyped __js__("Snap.path.findDotsAtSegment(p1x, p1y, c1x, c1y, c2x, c2y, p2x, p2y, t)");
+	inline static public function path_findDotsAtSegment(p1x:Float, p1y:Float, c1x:Float, c1y:Float, c2x:Float, c2y:Float, p2x:Float, p2y:Float, t:Float): SnapPointInformation {
+		var a=p1x; var b=p1y; var c=c1x; var d=c1y; var e=c2x; var f=c2y; var g=p2x; var h=p2y; var i=t;
+		return untyped __js__("Snap.path.findDotsAtSegment(a,b,c,d,e,f,g,h,i)");
 	}
-	static public function path_getBBox(path:String):Dynamic {
-		return untyped __js__("Snap.path.getBBox(path)");
+	inline static public function path_getBBox(path:String):Dynamic {
+		var p=path;
+		return untyped __js__("Snap.path.getBBox(p)");
 	}
-	static public function path_getPointAtLength(path:String, length:Float):Dynamic {
-		return untyped __js__("Snap.path.getPointAtLength(path, length)");
+	inline static public function path_getPointAtLength(path:String, length:Float):Dynamic {
+		var p=path; var l=length;
+		return untyped __js__("Snap.path.getPointAtLength(p, l)");
 	}
-	static public function path_getSubpath(path:String, from:Float, to:Float):String {
-		return untyped __js__("Snap.path.getSubpath(path, from, to)");
+	inline static public function path_getSubpath(path:String, from:Float, to:Float):String {
+		var p=path; var f=from; var t=to;
+		return untyped __js__("Snap.path.getSubpath(p, f, t)");
 	}
-	static public function path_getTotalLength(path:String):Float {
-		return untyped __js__("Snap.path.getTotalLength(path)");
+	inline static public function path_getTotalLength(path:String):Float {
+		var p=path;
+		return untyped __js__("Snap.path.getTotalLength(p)");
 	}
-	static public function path_intersection(path1:String, path2:String): Array<Dynamic> {
-		return untyped __js__("Snap.path.intersection(path1, path2)");
+	inline static public function path_intersection(path1:String, path2:String): Array<Dynamic> {
+		var p1=path1; var p2=path2;
+		return untyped __js__("Snap.path.intersection(p1, p2)");
 	}
-	static public function path_isPointInsidePath(path:String, x:Float, y:Float):Bool {
-		return untyped __js__("Snap.path.isPointInsidePath(path, x, y)");
+	inline static public function path_isPointInsidePath(path:String, x:Float, y:Float):Bool {
+		var p=path; var x1=x; var y1=y;
+		return untyped __js__("Snap.path.isPointInsidePath(p, x1, y1)");
 	}
-	static public function path_isPointInsideBBox(bbox:String, x:Float, y:Float):Bool {
-		return untyped __js__("Snap.path.isPointInsideBBox(bbox, x, y)");
+	inline static public function path_isPointInsideBBox(bbox:String, x:Float, y:Float):Bool {
+		var b=bbox; var x1=x; var y1=y;
+		return untyped __js__("Snap.path.isPointInsideBBox(b, x1, y1)");
 	}
-	static public function path_map(path:String, matrix:SnapMatrix):String {
-		return untyped __js__("Snap.path.map(path, matrix)");
+	inline static public function path_map(path:String, matrix:SnapMatrix):String {
+		var p=path; var m=matrix;	
+		return untyped __js__("Snap.path.map(p, m)");
 	}
-	static public function path_toAbsolute(path:String):Array<Dynamic>{
-		return untyped __js__("Snap.path.toAbsolute(path)");
+	inline static public function path_toAbsolute(path:String):Array<Dynamic>{
+		var p=path;
+		return untyped __js__("Snap.path.toAbsolute(p)");
 	}
-	static public function path_toCubic(pathString:String):Array<Dynamic> {
-		return untyped __js__("Snap.path.toCubic(pathString)");
+	inline static public function path_toCubic(path:String):Array<Dynamic> {
+		var p=path;
+		return untyped __js__("Snap.path.toCubic(p)");
 	}
-	static public function path_toRelative(pathString:String):Array<Dynamic> {
-		return untyped __js__("Snap.path.toRelative(pathString)");
+	inline static public function path_toRelative(path:String):Array<Dynamic> {
+		var p=path;
+		return untyped __js__("Snap.path.toRelative(p)");
 	}
 
 	// Filter utility methods
-	static public function filter_blur(x:Float, ?y:Float): String {
-		return untyped __js__("Snap.filter.blur(x, y)");
+	inline static public function filter_blur(x:Float, ?y:Float): String {
+		var x1 = x;var y1 = y;
+		return untyped __js__("Snap.filter.blur(x1, y1)");
 	}
-	static public function filter_brightness(amount:Float):String {
-		return untyped __js__("Snap.filter.brightness(amount)");
+	inline static public function filter_brightness(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.brightness(a)");
 	}
-	static public function filter_contrast(amount:Float):String {
-		return untyped __js__("Snap.filter.contrast(amount)");
+	inline static public function filter_contrast(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.contrast(a)");
 	}
-	static public function filter_grayscale(amount:Float):String {
-		return untyped __js__("Snap.filter.grayscale(amount)");
+	inline static public function filter_grayscale(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.grayscale(a)");
 	}
-	static public function filter_hueRotate(angle:Float):String {
-		return untyped __js__("Snap.filter.hueRotate(angle)");
+	inline static public function filter_hueRotate(angle:Float):String {
+		var a = angle;
+		return untyped __js__("Snap.filter.hueRotate(a)");
 	}
-	static public function filter_invert(amount:Float):String {
-		return untyped __js__("Snap.filter.invert(amount)");
+	inline static public function filter_invert(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.invert(a)");
 	}
-	static public function filter_saturate(amount:Float):String {
-		return untyped __js__("Snap.filter.saturate(amount)");
+	inline static public function filter_saturate(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.saturate(a)");
 	}
-	static public function filter_sepia(amount:Float):String {
-		return untyped __js__("Snap.filter.sepia(amount)");
+	inline static public function filter_sepia(amount:Float):String {
+		var a = amount;
+		return untyped __js__("Snap.filter.sepia(a)");
 	}
 	inline static public function filter_shadow(dx:Float, dy:Float, ?blur:Float, ?color:String):String {
-		return untyped __js__("Snap.filter.shadow(dx, dy, blur, color)");
+		var dx1 = dx;var dy1 = dy; var blur1=blur; var color1=color;
+		return untyped __js__("Snap.filter.shadow(dx1, dy1, blur1, color1)");
 	}
 
 	// Element creation
@@ -107,9 +129,10 @@ extern class Snap {
 	public function ellipse(x:Float, y:Float, rx:Float, ry:Float):SnapElement;
 	public function filter(filstr:String):SnapElement;
 	public function fragment(varargs:Dynamic):SnapFragment;
-	inline public function group(elements:Array<Dynamic>):SnapElement {
-		var elz = elements;
-		return untyped __js__("this.group.apply(this, elz)");
+	inline public function group(self:Snap, elements:Array<Dynamic>):SnapElement {
+		var e123 = elements;
+		var me123 = self;
+		return untyped __js__("me123.group.apply(me123, e123)");
 	}
 	public function gradient(gradientstr:String):SnapElement;
 	public function image(src:String, x:Float, y:Float, width:Float, height:Float):SnapElement;
@@ -120,6 +143,7 @@ extern class Snap {
 	public function rect(x:Float, y:Float, width:Float, height:Float, ?rx:Float, ?ry:Float):SnapElement;
 	public function text(x:Float, y:Float, text:String):SnapElement;
 
+	public function append(el:SnapElement):SnapElement;
 	public function toString():String;
 
 
