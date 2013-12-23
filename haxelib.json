@@ -6,5 +6,6 @@
     "description"  : "A haxe extern for snap.svg",
     "version"      : "0.1.0",
     "releasenote"  : "",
-    "contributors" : ["prgsmall"]
+    "contributors" : ["prgsmall"],
+    "classPath"    : "src" 
 }
