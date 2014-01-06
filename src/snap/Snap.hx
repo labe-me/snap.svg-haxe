@@ -228,7 +228,7 @@ extern class SnapElement {
 	public function after(el:SnapElement):SnapElement;
 	public function animate(newAttrs:Dynamic, duration:Float, ?easing:String, ?callbackFunction:Dynamic):SnapElement;
 	public function append(el:SnapElement):SnapElement;
-	public function asPx(attr:String, ?value:String):String;
+	public function asPX(attr:String, ?value:String):String;
 	public function attr(?p0:Dynamic, ?p1:Dynamic):Dynamic;
 	public function before(el:SnapElement):SnapElement;
 	public function click(handler:Event->Void):SnapElement;
@@ -256,9 +256,9 @@ extern class SnapElement {
 	public function pattern(x:Float, y:Float, width:Float, height:Float):SnapElement;
 	public function prepend(el:SnapElement):SnapElement;
 	public function remove():SnapElement;
-	public function removeDate(?key:String):SnapElement;
+	public function removeData(?key:String):SnapElement;
 	public function select(query:String):Dynamic;
-	public function selectAll(query:String):Dynamic;
+	public function selectAll(query:String):SnapSet;
 	public function stop():SnapElement;
 	public function toDefs():SnapElement;
 	public function toString():StringBuf;
