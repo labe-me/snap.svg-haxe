@@ -6,7 +6,7 @@ package snap;
 
 import js.html.*;
 
-// The Snap class maps to the Paper object defined in the snap api
+// The Snap class maps to the Paper object defined in the snap api and extends SnapElement.
 
 @:native("Snap")
 extern class Snap extends SnapElement {
@@ -28,14 +28,10 @@ extern class Snap extends SnapElement {
 	
 	static public function snapTo(values:Array<Float>, value:Float, ?tolerance:Float):Float;
 
-	static var path : SnapPath;
-	static var filter : SnapFilter;
-
 	// Element creation
 	public function circle(x:Float, y:Float, r:Float):SnapElement;
 	public function el(name:String, attr:Dynamic):SnapElement;
 	public function ellipse(x:Float, y:Float, rx:Float, ry:Float):SnapElement;
-	public function filter(filstr:String):SnapElement;
 	public function fragment(varargs:Dynamic):SnapFragment;
 	inline public function group(self:Snap, elements:Array<Dynamic>):SnapElement {
 		var e123 = elements;
@@ -45,13 +41,12 @@ extern class Snap extends SnapElement {
 	public function gradient(gradientstr:String):SnapElement;
 	public function image(src:String, x:Float, y:Float, width:Float, height:Float):SnapElement;
 	public function line(x1:Float, y1:Float, x2:Float, y2:Float):SnapElement;
+	public function filter(filstr:String):SnapElement;
 	public function path(?pathString:String):SnapElement;
 	public function polygon(?varargs:Array<Dynamic>):SnapElement;
 	public function polyline(?varargs:Array<Dynamic>):SnapElement;
 	public function rect(x:Float, y:Float, width:Float, height:Float, ?rx:Float, ?ry:Float):SnapElement;
 	public function text(x:Float, y:Float, text:Dynamic):SnapElement;
-
-	public function toString():String;
 
 	static public function getRGB(color:String):SnapRGB;
 	static public function getColor(?val:Float):String;
