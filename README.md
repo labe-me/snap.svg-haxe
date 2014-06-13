@@ -1,4 +1,9 @@
 snap.svg-haxe
 =============
 
-A haxe extern for snap.svg
+haxe externs for snap.svg
+
+Install:
+
+    haxelib git snapsvg https://github.com/labe-me/snap.svg-haxe.git master src/
+

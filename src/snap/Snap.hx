@@ -9,11 +9,10 @@ import js.html.*;
 // The Snap class maps to the Paper object defined in the snap api
 
 @:native("Snap")
-extern class Snap {
+extern class Snap extends SnapElement {
 	public function new(?p0:Dynamic, ?p1:Dynamic);
 	
 	// Public static methods:
-	static public function Matrix(a:Dynamic, ?b:Float, ?c:Float, ?d:Float, ?e:Float, ?f:Float):SnapMatrix;
 	static public function ajax(url:String, postData:Dynamic, callbackFunction:Dynamic, scope:Dynamic):Dynamic;  // XmlHttpRequest
 	static public function angle(x1:Float, y1:Float, x2:Float, y2:Float, ?x3:Float, ?y3:Float):Float;
 	static public function animation(params:Dynamic, ms:Float, easing:String, ?callbackFunction:Dynamic):Dynamic;
@@ -21,107 +20,16 @@ extern class Snap {
 	static public function deg(rad:Float):Float;
 	static public function format(token:String, json:Dynamic):String;
 	static public function is(obj:Dynamic, type:String):Bool;
-	static public function load(url:String, callbackFunction:Dynamic, ?scope:Dynamic):Void;
+	static public function load(url:String, callbackFunction:SnapFragment->Void, ?scope:Dynamic):Void;
 	static public function parse(svg:String):SnapFragment;
 	static public function parsePathString(pathString:String):Array<Dynamic>;
 	static public function parseTransformString(tString:String):Array<Dynamic>;
 	static public function rad(deg:Float):Float;
 	
-	static public function select(query:String):SnapElement;
-	static public function selectAll(query:String):SnapSet;
 	static public function snapTo(values:Array<Float>, value:Float, ?tolerance:Float):Float;
 
-	// path utility methods
-	inline static public function path_bezierBBox(bez:Array<Float>):SnapBoundingBox {
-		var bz = bez;
-		return untyped __js__("Snap.path.bezierBBox(bz)");
-	}
-	inline static public function path_findDotsAtSegment(p1x:Float, p1y:Float, c1x:Float, c1y:Float, c2x:Float, c2y:Float, p2x:Float, p2y:Float, t:Float): SnapPointInformation {
-		var a=p1x; var b=p1y; var c=c1x; var d=c1y; var e=c2x; var f=c2y; var g=p2x; var h=p2y; var i=t;
-		return untyped __js__("Snap.path.findDotsAtSegment(a,b,c,d,e,f,g,h,i)");
-	}
-	inline static public function path_getBBox(path:String):Dynamic {
-		var p=path;
-		return untyped __js__("Snap.path.getBBox(p)");
-	}
-	inline static public function path_getPointAtLength(path:String, length:Float):Dynamic {
-		var p=path; var l=length;
-		return untyped __js__("Snap.path.getPointAtLength(p, l)");
-	}
-	inline static public function path_getSubpath(path:String, from:Float, to:Float):String {
-		var p=path; var f=from; var t=to;
-		return untyped __js__("Snap.path.getSubpath(p, f, t)");
-	}
-	inline static public function path_getTotalLength(path:String):Float {
-		var p=path;
-		return untyped __js__("Snap.path.getTotalLength(p)");
-	}
-	inline static public function path_intersection(path1:String, path2:String): Array<Dynamic> {
-		var p1=path1; var p2=path2;
-		return untyped __js__("Snap.path.intersection(p1, p2)");
-	}
-	inline static public function path_isPointInsidePath(path:String, x:Float, y:Float):Bool {
-		var p=path; var x1=x; var y1=y;
-		return untyped __js__("Snap.path.isPointInsidePath(p, x1, y1)");
-	}
-	inline static public function path_isPointInsideBBox(bbox:String, x:Float, y:Float):Bool {
-		var b=bbox; var x1=x; var y1=y;
-		return untyped __js__("Snap.path.isPointInsideBBox(b, x1, y1)");
-	}
-	inline static public function path_map(path:String, matrix:SnapMatrix):String {
-		var p=path; var m=matrix;	
-		return untyped __js__("Snap.path.map(p, m)");
-	}
-	inline static public function path_toAbsolute(path:String):Array<Dynamic>{
-		var p=path;
-		return untyped __js__("Snap.path.toAbsolute(p)");
-	}
-	inline static public function path_toCubic(path:String):Array<Dynamic> {
-		var p=path;
-		return untyped __js__("Snap.path.toCubic(p)");
-	}
-	inline static public function path_toRelative(path:String):Array<Dynamic> {
-		var p=path;
-		return untyped __js__("Snap.path.toRelative(p)");
-	}
-
-	// Filter utility methods
-	inline static public function filter_blur(x:Float, ?y:Float): String {
-		var x1 = x;var y1 = y;
-		return untyped __js__("Snap.filter.blur(x1, y1)");
-	}
-	inline static public function filter_brightness(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.brightness(a)");
-	}
-	inline static public function filter_contrast(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.contrast(a)");
-	}
-	inline static public function filter_grayscale(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.grayscale(a)");
-	}
-	inline static public function filter_hueRotate(angle:Float):String {
-		var a = angle;
-		return untyped __js__("Snap.filter.hueRotate(a)");
-	}
-	inline static public function filter_invert(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.invert(a)");
-	}
-	inline static public function filter_saturate(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.saturate(a)");
-	}
-	inline static public function filter_sepia(amount:Float):String {
-		var a = amount;
-		return untyped __js__("Snap.filter.sepia(a)");
-	}
-	inline static public function filter_shadow(dx:Float, dy:Float, ?blur:Float, ?color:String):String {
-		var dx1 = dx;var dy1 = dy; var blur1=blur; var color1=color;
-		return untyped __js__("Snap.filter.shadow(dx1, dy1, blur1, color1)");
-	}
+	static var path : SnapPath;
+	static var filter : SnapFilter;
 
 	// Element creation
 	public function circle(x:Float, y:Float, r:Float):SnapElement;
@@ -160,66 +68,89 @@ extern class Snap {
 	static public function rgb(red:Float, green:Float, blue:Float):String;
 	static public function rgb2hsb(red:Float, green:Float, blue:Float):SnapHSB;
 	static public function rgb2hsl(red:Float, green:Float, blue:Float):SnapHSL;
-	
-	/*
-	 * Events
-	 */
-	
-	public function click(handler:Event->Void):Snap;
-	public function dblclick(handler:Event->Void):Snap;
-	public function mousedown(handler:Event->Void):Snap;
-	public function mousemove(handler:Event->Void):Snap;
-	public function mouseout(handler:Event->Void):Snap;
-	public function mouseover(handler:Event->Void):Snap;
-	public function mouseup(handler:Event->Void):Snap;
-	public function touchstart(handler:Event->Void):Snap;
-	public function touchmove(handler:Event->Void):Snap;
-	public function touchend(handler:Event->Void):Snap;
-	public function touchcancel(handler:Event->Void):Snap;
-	
-	public function unclick(handler:Event->Void):Snap;
-	public function undblclick(handler:Event->Void):Snap;
-	public function unmousedown(handler:Event->Void):Snap;
-	public function unmousemove(handler:Event->Void):Snap;
-	public function unmouseout(handler:Event->Void):Snap;
-	public function unmouseover(handler:Event->Void):Snap;
-	public function unmouseup(handler:Event->Void):Snap;
-	public function untouchstart(handler:Event->Void):Snap;
-	public function untouchmove(handler:Event->Void):Snap;
-	public function untouchend(handler:Event->Void):Snap;
-	public function untouchcancel(handler:Event->Void):Snap;	
 }
 
+@:native("Snap.path") extern class SnapPath {
+	static public function bezierBBox(bez:Array<Float>):SnapBoundingBox;
+	static public function findDotsAtSegment(p1x:Float, p1y:Float, c1x:Float, c1y:Float, c2x:Float, c2y:Float, p2x:Float, p2y:Float, t:Float): SnapPointInformation;
+	static public function getBBox(path:String):Dynamic;
+	static public function getPointAtLength(path:String, length:Float):Dynamic;
+	static public function getSubpath(path:String, from:Float, to:Float):String;
+	static public function getTotalLength(path:String):Float;
+	static public function intersection(path1:String, path2:String): Array<Dynamic>;
+	static public function isPointInsidePath(path:String, x:Float, y:Float):Bool;
+	static public function isPointInsideBBox(bbox:String, x:Float, y:Float):Bool;
+	static public function map(path:String, matrix:SnapMatrix):String;
+	static public function toAbsolute(path:String):Array<Dynamic>;
+	static public function toCubic(path:String):Array<Dynamic>;
+	static public function toRelative(path:String):Array<Dynamic>;
+}
+
+@:native("Snap.filter") extern class SnapFilter {
+	static public function blur(x:Float, ?y:Float): String;
+	static public function brightness(amount:Float):String;
+	static public function contrast(amount:Float):String;
+	static public function grayscale(amount:Float):String;
+	static public function hueRotate(angle:Float):String;
+	static public function invert(amount:Float):String;
+	static public function saturate(amount:Float):String;
+	static public function sepia(amount:Float):String;
+	static public function shadow(dx:Float, dy:Float, ?blur:Float, ?color:String):String;
+}
+
+@:native("Snap.Matrix")
 extern class SnapMatrix {
+	public function new(?a:Dynamic, ?b:Float, ?c:Float, ?d:Float, ?e:Float, ?f:Float);
 	public function add(a:Dynamic, ?b:Float, ?c:Float, ?d:Float, ?e:Float, ?f:Float):Void;
 	public function clone():SnapMatrix;
 	public function invert():SnapMatrix;
-	public function rotate(a:Float, x:Float, y:Float):Void;
-	public function scale(x:Float, ?y:Float, ?cx:Float, ?cy:Float):Void;
+	public function rotate(a:Float, x:Float, y:Float):SnapMatrix;
+	public function scale(x:Float, ?y:Float, ?cx:Float, ?cy:Float):SnapMatrix;
 	public function split():Dynamic;
 	public function toTransformString():String;
-	public function translate(x:Float, y:Float):Void;
+	public function translate(x:Float, y:Float):SnapMatrix;
 	public function x(x:Float, y:Float):Float;
 	public function y(x:Float, y:Float):Float;
 }
 
+@:native("mina")
 extern class SnapMina {
 	public function new(a:Float, A:Float, b:Float, B:Float, get:Dynamic, set:Dynamic, easing:Dynamic);
-	public function backin(n:Float):Float;
-	public function backout(n:Float):Float;
-	public function bounce(n:Float):Float;
-	public function easein(n:Float):Float;
-	public function easeinout(n:Float):Float;
-	public function easeout(n:Float):Float;
-	public function elastic(n:Float):Float;
-	public function getById(id:String):SnapMina;
-	public function linear(n:Float):Float;
-	public function time():Float;
+	// TODO: generic animation descriptor
+	// {
+	// id string animation id,
+	// start number start slave number,
+	// end number end slave number,
+	// b number start master number,
+	// s number animation status (0..1),
+	// dur number animation duration,
+	// spd number animation speed,
+	// get function getter of master number (see mina.time),
+	// set function setter of slave number,
+	// easing function easing function, default is mina.linear,
+	// status function status getter/setter,
+	// speed function speed getter/setter,
+	// duration function duration getter/setter,
+	// stop function animation stopper
+	// pause function pauses the animation
+	// resume function resumes the animation
+	// update function calles setter with the right value of the animation
+	
+	public static function backin(n:Float):Float;
+	public static function backout(n:Float):Float;
+	public static function bounce(n:Float):Float;
+	public static function easein(n:Float):Float;
+	public static function easeinout(n:Float):Float;
+	public static function easeout(n:Float):Float;
+	public static function elastic(n:Float):Float;
+	public static function getById(id:String):SnapMina;
+	public static function linear(n:Float):Float;
+	public static function time():Float;
 }
 
 extern class SnapFragment {
-	public function select():Void;
-	public function selectAll():Void;
+	public function select(q:String) : SnapElement;
+	public function selectAll(q:String) : Array<SnapElement>;
 }
 
 extern class SnapElement {
@@ -266,7 +197,8 @@ extern class SnapElement {
 	public function touchend(handler:Event->Void):SnapElement;
 	public function touchmove(handler:Event->Void):SnapElement;
 	public function touchstart(handler:Event->Void):SnapElement;
-	public function transform(tstr:String):Dynamic;
+	@:overload(function(m:SnapMatrix):SnapElement {})
+	public function transform(tstr:String):SnapElement;
 	public function unclick(handler:Event->Void):SnapElement;
 	public function undblclick(handler:Event->Void):SnapElement;
 	public function unhover(handler_in:Event->Void, handler_out:Event->Void):SnapElement;
